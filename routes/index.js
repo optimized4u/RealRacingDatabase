@@ -14,4 +14,8 @@ router.get('/reports', function(req, res, next) {
   res.render('reports', { title: 'Reports' });
 });
 
+router.get('/login', function(req, res, next) {
+    res.render('login');
+})
+
 module.exports = router;

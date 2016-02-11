@@ -3,11 +3,15 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var passport = require('passport');
+// This will configure Passport to use Auth0
+var strategy = require('./setup-passport');
 
 var app = express();
 // Connect to database
@@ -28,10 +32,24 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({ secret: 'KvEPSZXwQLpY2BJWc-myoJpv0Qv6yx1BUKPupR7gYT_0_Jkoo73xJGtiwmCzKlpy', resave: false,  saveUninitialized: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+// Auth0 middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', routes);
 app.use('/users', users);
+
+// Auth0 callback handler
+app.get('/callback',
+  passport.authenticate('auth0', { failureRedirect: '/logerror' }),
+  function(req, res) {
+    if (!req.user) {
+      throw new Error('user null');
+    }
+    res.redirect("/users");
+  });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

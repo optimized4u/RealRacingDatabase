@@ -16,3 +16,15 @@ html( lang="en" )
 
   script( src='//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js' )
   script( src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js' )
+  script( src='https://cdn.auth0.com/js/lock-8.2.min.js' )
+  script.
+    var lock = new Auth0Lock('Py6HeAMtVW5Lu07k1Gl1KQrArMfU6xGr', 'optimized4u.eu.auth0.com');
+    function signin() {
+      lock.show({
+          callbackURL: 'http://localhost/callback'
+        , responseType: 'code'
+        , authParams: {
+          scope: 'openid profile'
+        }
+      });
+    }
