@@ -2,5 +2,9 @@ include mixins
 extends layout
 
 block content
+  +nav("Optimized4U", "dropdown_menu")
+    +nav_item( "/" ) Home
+    +nav_item( "/records" ) Records
+    +nav_item( "/reports", "active" ) Reports
   h1= title
   p Welcome to #{title}

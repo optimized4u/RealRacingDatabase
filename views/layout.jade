@@ -2,7 +2,7 @@ include mixins
 doctype
 html( lang="en" )
   head
-    title Bootstrap, Jade and Express
+    title Real Racing Database
     meta( charset='utf-8' )
     meta( http-equiv='X-UA-Compatible', content='IE=edge' )
     meta( name='viewport', content='width=device-width, initial-scale=1.0' )
@@ -12,12 +12,7 @@ html( lang="en" )
 
   body(style="padding-bottom:10rem;")
     .container
-      +nav("Optimized4U", "dropdown_menu")
-        +nav_item( "/", "active" ) Home
-        +nav_item( "/records" ) Records
-        +nav_item( "/reports" ) Reports
-
-       block content
+      block content
 
   script( src='//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js' )
   script( src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js' )
