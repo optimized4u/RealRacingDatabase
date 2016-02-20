@@ -19,6 +19,9 @@ html( lang="en" )
           a(href='/records') Records
         li(class=(title === 'Reports' ? 'active' : ''))
           a(href='/reports') Reports
+        form.navbar-form.navbar-right
+          .form-group
+            button.btn.btn-success(onClick="signin()") Sign In / Register
       block content
 
   script( src='//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js' )
