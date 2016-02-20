@@ -2,7 +2,7 @@ include mixins
 doctype
 html( lang="en" )
   head
-    title Real Racing Database
+    title Real Racing Telemetry
     meta( charset='utf-8' )
     meta( http-equiv='X-UA-Compatible', content='IE=edge' )
     meta( name='viewport', content='width=device-width, initial-scale=1.0' )
@@ -12,19 +12,29 @@ html( lang="en" )
 
   body(style="padding-bottom:10rem;")
     .container
+      +nav("Optimized4U", "dropdown_menu")
+        li(class=(title === 'Home' ? 'active' : ''))
+          a(href='/') Home
+        li(class=(title === 'Records' ? 'active' : ''))
+          a(href='/records') Records
+        li(class=(title === 'Reports' ? 'active' : ''))
+          a(href='/reports') Reports
       block content
 
   script( src='//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js' )
   script( src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js' )
   script( src='https://cdn.auth0.com/js/lock-8.2.min.js' )
   script.
+    $( document ).ready(function() {
+
+    });
     var lock = new Auth0Lock('Py6HeAMtVW5Lu07k1Gl1KQrArMfU6xGr', 'optimized4u.eu.auth0.com');
     function signin() {
-      lock.show({
-          callbackURL: 'http://localhost/callback'
-        , responseType: 'code'
-        , authParams: {
-          scope: 'openid profile'
-        }
-      });
+        lock.show({
+             callbackURL: 'http://localhost/callback'
+             , responseType: 'code'
+             , authParams: {
+                 scope: 'openid profile'
+             }
+        });
     }
