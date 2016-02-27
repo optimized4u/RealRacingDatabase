@@ -1,8 +1,7 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+button.btn.btn-success {
+    margin-left: 15px;
 }
 
-a {
-  color: #00B7FF;
+button span {
+    padding-right: 10px;
 }

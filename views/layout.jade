@@ -6,9 +6,10 @@ html( lang="en" )
     meta( charset='utf-8' )
     meta( http-equiv='X-UA-Compatible', content='IE=edge' )
     meta( name='viewport', content='width=device-width, initial-scale=1.0' )
-    meta( name='description', content='Bootstrap with Jade and Express 4' )
+    meta( name='description', content='Real Racing 3 Telemetry Database' )
     //- Bootswatch Theme
     +bootswatch("darkly")
+    link(rel='stylesheet', href='/stylesheets/style.css')
 
   body(style="padding-bottom:10rem;")
     .container
@@ -21,7 +22,9 @@ html( lang="en" )
           a(href='/reports') Reports
         form.navbar-form.navbar-right
           .form-group
-            button.btn.btn-success(onClick="signin()") Sign In / Register
+            button.btn.btn-success(onClick="signin()")
+              +icon("user")
+              | Sign In / Register
       block content
 
   script( src='//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js' )
