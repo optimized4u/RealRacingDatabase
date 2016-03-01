@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var user = require('./routes/user');
 var passport = require('passport');
 // This will configure Passport to use Auth0
 var strategy = require('./setup-passport');
@@ -39,7 +39,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', routes);
-app.use('/users', users);
+app.use('/user', user);
 
 // Auth0 callback handler
 app.get('/callback',
@@ -48,7 +48,7 @@ app.get('/callback',
     if (!req.user) {
       throw new Error('user null');
     }
-    res.redirect("/users");
+    res.redirect("/user");
   });
 
 // catch 404 and forward to error handler
