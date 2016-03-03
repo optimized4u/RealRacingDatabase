@@ -15,7 +15,11 @@ var strategy = require('./setup-passport');
 
 var app = express();
 // Connect to database
-mongoose.connect('mongodb://localhost/realracing');
+//localhost connection
+//mongoose.connect('mongodb://localhost/realracing');
+//Heroku connection
+mongoose.connect(process.env.MONGOLAB_URI);
+// End Heroku connection
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
